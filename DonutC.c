@@ -23,6 +23,7 @@ int main(void) {
         }
     }
 
+    //calcul des points theta et phi
     for (double a = 0; a <= (2 * M_PI); a+=0.5) {
         theta = a;
 
@@ -31,6 +32,7 @@ int main(void) {
         }
     }
 
+    // calculs du petit cercle tournant autour d'un grand cercle faisant un tore (donut)
     double x = (R + r * cos(theta)) * cos(phi);
     double y = (R + r * cos(theta)) * sin(phi);
     double z = r * sin(theta);
