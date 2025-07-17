@@ -5,37 +5,40 @@
 #define colonne 80
 #define ligne 24
 
-int main(void) {
+int main(void)
+{
     // declaration des variables
     double theta = 0;
     double phi = 0;
     double R = 2;
     double r = 1;
-
+    double x;
+    double y;
+    double z;
 
     // delcaration des tableaux
     char screen[ligne][colonne];
 
-    //initialisation du tableau avec des espaces
+    // initialisation du tableau avec des espaces
     for (int x = 0; x < ligne; x++) {
         for (int y = 0; y < colonne; y++) {
             screen[x][y] = ' ';
         }
     }
 
-    //calcul des points theta et phi
-    for (double a = 0; a <= (2 * M_PI); a+=0.5) {
+    // calcul des points theta et phi
+    for (double a = 0; a <= (2 * M_PI); a += 0.5) {
         theta = a;
 
-        for (double b = 0; b <= (2 * M_PI); b+=0.5){
+        for (double b = 0; b <= (2 * M_PI); b += 0.5) {
             phi = b;
+
+            //clacule du petit cercle (r) qui tourne autours du grand cercle (R) formant un tore (donut)
+            x = (R + r * cos(theta)) * cos(phi);
+            y = (R + r * cos(theta)) * sin(phi);
+            z = r * sin(theta);
         }
     }
-
-    // calculs du petit cercle tournant autour d'un grand cercle faisant un tore (donut)
-    double x = (R + r * cos(theta)) * cos(phi);
-    double y = (R + r * cos(theta)) * sin(phi);
-    double z = r * sin(theta);
 
     // affichage du tableau
     for (int i = 0; i < ligne; i++) {
