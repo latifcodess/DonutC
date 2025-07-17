@@ -1,11 +1,19 @@
 #include <stdio.h>
+#include <math.h>
+#include <unistd.h>
+
 #define colonne 80
 #define ligne 24
-#define colonne_centre colonne/2
-#define ligne_centre ligne/2
 
 int main(void) {
-    // delcaration du tableau screen
+    // declaration des variables
+    double theta = 0;
+    double phi = 0;
+    double R = 2;
+    double r = 1;
+
+
+    // delcaration des tableaux
     char screen[ligne][colonne];
 
     //initialisation du tableau avec des espaces
@@ -15,8 +23,17 @@ int main(void) {
         }
     }
 
-    // ajout d'un caractère au milieu du tableau
-    screen[ligne_centre][colonne_centre] = 'X';
+    for (double a = 0; a <= (2 * M_PI); a+=0.5) {
+        theta = a;
+
+        for (double b = 0; b <= (2 * M_PI); b+=0.5){
+            phi = b;
+        }
+    }
+
+    double x = (R + r * cos(theta)) * cos(phi);
+    double y = (R + r * cos(theta)) * sin(phi);
+    double z = r * sin(theta);
 
     // affichage du tableau
     for (int i = 0; i < ligne; i++) {
